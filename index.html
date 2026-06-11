@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Know Your Exam – NEET Preparation Hub</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --ink: #0f1117;
+    --ink2: #1e2130;
+    --surface: #f7f8fc;
+    --card: #ffffff;
+    --accent: #2563eb;
+    --accent2: #7c3aed;
+    --green: #059669;
+    --amber: #d97706;
+    --red: #dc2626;
+    --border: #e2e6f0;
+    --muted: #6b7280;
+    --radius: 14px;
+    --shadow: 0 2px 16px rgba(15,17,23,0.08);
+    --shadow-lg: 0 8px 40px rgba(15,17,23,0.14);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--surface);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 700; font-size: 1.15rem; color: var(--ink);
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 1rem;
+  }
+  .nav-links {
+    display: flex; gap: 4px; list-style: none;
+  }
+  .nav-links a {
+    padding: 6px 14px; border-radius: 8px;
+    font-size: 0.875rem; font-weight: 500;
+    color: var(--muted); text-decoration: none;
+    transition: all 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--accent); background: rgba(37,99,235,0.07);
+  }
+  .nav-right { display: flex; gap: 8px; align-items: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 18px; border-radius: 10px;
+    font-size: 0.875rem; font-weight: 600;
+    cursor: pointer; border: none; transition: all 0.2s;
+    text-decoration: none;
+  }
+  .btn-primary { background: var(--accent); color: white; }
+  .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(37,99,235,0.35); }
+  .btn-outline { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
+  .btn-outline:hover { background: rgba(37,99,235,0.07); }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── PAGES ── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 72px 24px 56px;
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(37,99,235,0.08); color: var(--accent);
+    border: 1px solid rgba(37,99,235,0.2);
+    padding: 4px 12px; border-radius: 20px;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.04em;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+    line-height: 1.15; color: var(--ink);
+    margin-bottom: 18px;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero p { color: var(--muted); font-size: 1.05rem; margin-bottom: 28px; line-height: 1.7; }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  }
+  .stat-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px;
+    box-shadow: var(--shadow);
+  }
+  .stat-card .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.8rem; font-weight: 600; color: var(--ink);
+  }
+  .stat-card .num span { font-size: 1rem; color: var(--accent); }
+  .stat-card p { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+
+  /* ── SECTION ── */
+  .section { padding: 56px 24px; max-width: 1100px; margin: 0 auto; }
+  .section-head { margin-bottom: 36px; }
+  .section-head h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2rem; margin-bottom: 8px;
+  }
+  .section-head p { color: var(--muted); font-size: 0.95rem; }
+  .eyebrow {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+  }
+
+  /* ── FEATURE GRID ── */
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr)); gap: 18px; }
+  .feature-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 24px;
+    box-shadow: var(--shadow); cursor: pointer;
+    transition: all 0.2s;
+  }
+  .feature-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
+  .feature-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; margin-bottom: 14px;
+  }
+  .feature-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+  .feature-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+  /* ── MOCK TEST ── */
+  .mock-container {
+    max-width: 860px; margin: 0 auto; padding: 24px;
+  }
+  .mock-header {
+    background: var(--ink); color: white;
+    border-radius: var(--radius); padding: 20px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .mock-title { font-size: 1.1rem; font-weight: 600; }
+  .mock-meta { display: flex; gap: 24px; align-items: center; }
+  .timer-box {
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 8px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.4rem; font-weight: 600; color: #fbbf24;
+    min-width: 80px; text-align: center;
+  }
+  .timer-box.warning { color: #f87171; }
+  .q-progress {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.85rem; color: rgba(255,255,255,0.7);
+  }
+  .progress-bar {
+    width: 120px; height: 6px; background: rgba(255,255,255,0.2);
+    border-radius: 3px; overflow: hidden;
+  }
+  .progress-fill { height: 100%; background: #34d399; border-radius: 3px; transition: width 0.4s; }
+
+  .question-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px;
+    box-shadow: var(--shadow); margin-bottom: 16px;
+  }
+  .q-meta {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 0.78rem; color: var(--muted); margin-bottom: 14px;
+  }
+  .q-badge {
+    padding: 3px 10px; border-radius: 20px;
+    font-weight: 600; font-size: 0.75rem;
+  }
+  .badge-bio { background: #d1fae5; color: #065f46; }
+  .badge-chem { background: #dbeafe; color: #1e40af; }
+  .badge-phy { background: #ede9fe; color: #5b21b6; }
+
+  .q-text { font-size: 1rem; line-height: 1.7; margin-bottom: 20px; font-weight: 500; }
+
+  .q-diagram {
+    background: linear-gradient(135deg, #f0f4ff, #e8f0fe);
+    border: 1px solid #c7d7fd; border-radius: 10px;
+    padding: 16px; margin-bottom: 20px;
+    text-align: center; color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .q-diagram svg { display: block; margin: 0 auto 8px; }
+
+  .options { display: grid; gap: 10px; }
+  .option {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px 18px; border-radius: 10px;
+    border: 1.5px solid var(--border);
+    cursor: pointer; transition: all 0.18s;
+    font-size: 0.93rem; background: var(--card);
+  }
+  .option:hover { border-color: var(--accent); background: rgba(37,99,235,0.04); }
+  .option.selected { border-color: var(--accent); background: rgba(37,99,235,0.08); }
+  .option.correct { border-color: var(--green); background: rgba(5,150,105,0.08); }
+  .option.wrong { border-color: var(--red); background: rgba(220,38,38,0.06); }
+  .option-letter {
+    width: 26px; height: 26px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.78rem; font-weight: 700;
+    background: var(--border); color: var(--muted); flex-shrink: 0;
+  }
+  .option.selected .option-letter { background: var(--accent); color: white; }
+  .option.correct .option-letter { background: var(--green); color: white; }
+  .option.wrong .option-letter { background: var(--red); color: white; }
+
+  .mock-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 8px;
+  }
+  .q-palette {
+    display: flex; gap: 6px; flex-wrap: wrap; max-width: 280px;
+  }
+  .q-dot {
+    width: 30px; height: 30px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem; font-weight: 600; cursor: pointer;
+    background: var(--border); color: var(--muted);
+    transition: all 0.15s;
+  }
+  .q-dot.answered { background: var(--green); color: white; }
+  .q-dot.current { background: var(--accent); color: white; }
+  .q-dot.skipped { background: #fde68a; color: #92400e; }
+
+  /* ── LEADERBOARD ── */
+  .leaderboard-table {
+    background: var(--card); border-radius: var(--radius);
+    overflow: hidden; border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  .lb-row {
+    display: grid; grid-template-columns: 60px 1fr 100px 100px 80px;
+    padding: 16px 20px; align-items: center;
+    border-bottom: 1px solid var(--border); font-size: 0.9rem;
+    transition: background 0.15s;
+  }
+  .lb-row:last-child { border-bottom: none; }
+  .lb-row:hover { background: var(--surface); }
+  .lb-row.header {
+    background: var(--ink); color: white;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .lb-row.top1 { background: linear-gradient(90deg, rgba(251,191,36,0.12), transparent); }
+  .lb-row.top2 { background: linear-gradient(90deg, rgba(148,163,184,0.12), transparent); }
+  .lb-row.top3 { background: linear-gradient(90deg, rgba(205,127,50,0.1), transparent); }
+  .rank { font-weight: 700; font-size: 1.1rem; }
+  .rank.gold { color: #f59e0b; }
+  .rank.silver { color: #94a3b8; }
+  .rank.bronze { color: #cd7f32; }
+  .avatar {
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85rem; margin-right: 10px;
+    flex-shrink: 0;
+  }
+  .student-info { display: flex; align-items: center; }
+  .student-name { font-weight: 600; }
+  .student-city { font-size: 0.78rem; color: var(--muted); }
+  .score-bar {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .mini-bar {
+    flex: 1; height: 6px; background: var(--border);
+    border-radius: 3px; overflow: hidden;
+  }
+  .mini-fill { height: 100%; border-radius: 3px; background: var(--accent); }
+
+  /* ── Q&A BANK ── */
+  .search-bar {
+    display: flex; gap: 10px; margin-bottom: 24px;
+  }
+  .search-input {
+    flex: 1; padding: 12px 18px; border-radius: 10px;
+    border: 1.5px solid var(--border); font-size: 0.93rem;
+    font-family: 'Space Grotesk', sans-serif;
+    outline: none; transition: border 0.2s;
+    background: var(--card);
+  }
+  .search-input:focus { border-color: var(--accent); }
+  .subject-tabs {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+  }
+  .stab {
+    padding: 7px 16px; border-radius: 20px; font-size: 0.83rem;
+    font-weight: 600; cursor: pointer; border: 1.5px solid var(--border);
+    background: var(--card); color: var(--muted); transition: all 0.18s;
+  }
+  .stab.active, .stab:hover { border-color: var(--accent); color: var(--accent); background: rgba(37,99,235,0.07); }
+
+  .qa-list { display: grid; gap: 14px; }
+  .qa-item {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .qa-q {
+    padding: 18px 20px; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 12px;
+  }
+  .qa-q:hover { background: var(--surface); }
+  .qa-q-text { font-size: 0.93rem; font-weight: 500; line-height: 1.6; }
+  .qa-chevron { flex-shrink: 0; color: var(--muted); transition: transform 0.2s; }
+  .qa-item.open .qa-chevron { transform: rotate(180deg); }
+  .qa-a {
+    padding: 18px 20px; border-top: 1px solid var(--border);
+    background: #f8faff; display: none;
+    font-size: 0.9rem; line-height: 1.7; color: var(--ink2);
+  }
+  .qa-item.open .qa-a { display: block; }
+  .answer-label {
+    font-size: 0.75rem; font-weight: 700; color: var(--green);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;
+  }
+  .ncert-ref {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #dbeafe; color: #1e40af;
+    padding: 3px 10px; border-radius: 20px;
+    font-size: 0.73rem; font-weight: 600; margin-top: 10px;
+  }
+
+  /* ── DOWNLOADS ── */
+  .download-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .download-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 22px;
+    box-shadow: var(--shadow); transition: all 0.2s;
+  }
+  .download-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .dl-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: linear-gradient(135deg, #ef4444, #f97316);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; color: white; margin-bottom: 14px;
+  }
+  .dl-icon.blue { background: linear-gradient(135deg, var(--accent), var(--accent2)); }
+  .download-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+  .download-card p { font-size: 0.82rem; color: var(--muted); margin-bottom: 16px; }
+  .dl-meta { display: flex; justify-content: space-between; align-items: center; }
+  .dl-size { font-size: 0.78rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+
+  /* ── CHATBOT ── */
+  .chatbot-widget {
+    position: fixed; bottom: 24px; right: 24px; z-index: 200;
+  }
+  .chat-bubble {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; box-shadow: 0 4px 20px rgba(37,99,235,0.4);
+    font-size: 1.4rem; color: white; transition: all 0.2s;
+  }
+  .chat-bubble:hover { transform: scale(1.08); }
+  .chat-window {
+    position: absolute; bottom: 70px; right: 0;
+    width: 340px; background: var(--card);
+    border-radius: 18px; border: 1px solid var(--border);
+    box-shadow: var(--shadow-lg); display: none; overflow: hidden;
+  }
+  .chat-window.open { display: flex; flex-direction: column; }
+  .chat-header {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: white; padding: 16px 18px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .chat-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center; font-size: 1rem;
+  }
+  .chat-info { flex: 1; }
+  .chat-name { font-weight: 700; font-size: 0.9rem; }
+  .chat-status { font-size: 0.72rem; opacity: 0.8; }
+  .chat-messages {
+    flex: 1; padding: 16px; overflow-y: auto;
+    max-height: 300px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .msg {
+    max-width: 82%; font-size: 0.85rem; line-height: 1.55;
+    padding: 10px 14px; border-radius: 14px;
+  }
+  .msg.bot {
+    background: var(--surface); color: var(--ink);
+    border-radius: 14px 14px 14px 4px; align-self: flex-start;
+  }
+  .msg.user {
+    background: var(--accent); color: white;
+    border-radius: 14px 14px 4px 14px; align-self: flex-end;
+  }
+  .chat-input-row {
+    display: flex; gap: 8px; padding: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .chat-input {
+    flex: 1; padding: 10px 14px; border-radius: 22px;
+    border: 1.5px solid var(--border); font-size: 0.85rem;
+    font-family: 'Space Grotesk', sans-serif;
+    outline: none; transition: border 0.2s;
+  }
+  .chat-input:focus { border-color: var(--accent); }
+  .chat-send {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--accent); color: white; border: none;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; transition: background 0.2s;
+  }
+  .chat-send:hover { background: #1d4ed8; }
+
+  /* ── RATING ── */
+  .rating-section {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 28px;
+    box-shadow: var(--shadow); max-width: 500px;
+  }
+  .stars { display: flex; gap: 6px; margin: 12px 0; }
+  .star { font-size: 2rem; cursor: pointer; color: #d1d5db; transition: color 0.15s; }
+  .star.lit { color: #f59e0b; }
+  .star:hover { color: #fbbf24; }
+  .rating-cats { display: grid; gap: 12px; margin-top: 16px; }
+  .rating-row { display: flex; align-items: center; justify-content: space-between; }
+  .rating-label { font-size: 0.88rem; font-weight: 500; }
+  .mini-stars { display: flex; gap: 4px; }
+  .mini-star { font-size: 1.1rem; cursor: pointer; color: #d1d5db; transition: color 0.15s; }
+  .mini-star.lit { color: #f59e0b; }
+
+  /* ── RESULT ── */
+  .result-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 36px; text-align: center;
+    box-shadow: var(--shadow-lg); max-width: 500px; margin: 0 auto;
+  }
+  .result-score {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 4rem; font-weight: 700; color: var(--accent);
+    line-height: 1;
+  }
+  .result-max { font-size: 1.4rem; color: var(--muted); }
+  .result-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin: 24px 0;
+  }
+  .rs { padding: 14px; border-radius: 10px; }
+  .rs .val { font-size: 1.4rem; font-weight: 700; }
+  .rs .lbl { font-size: 0.78rem; color: var(--muted); }
+
+  /* ── TOPICS ── */
+  .topic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .topic-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px;
+    cursor: pointer; transition: all 0.18s;
+  }
+  .topic-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .topic-card h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 4px; }
+  .topic-card p { font-size: 0.78rem; color: var(--muted); }
+  .topic-count {
+    display: inline-flex; align-items: center;
+    background: rgba(37,99,235,0.08); color: var(--accent);
+    padding: 2px 8px; border-radius: 10px; font-size: 0.72rem;
+    font-weight: 700; margin-top: 6px;
+  }
+
+  /* ── HAMBURGER ── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: all 0.3s; }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%);
+    background: var(--ink); color: white; padding: 12px 24px; border-radius: 30px;
+    font-size: 0.88rem; font-weight: 500; z-index: 300;
+    opacity: 0; transition: opacity 0.3s; pointer-events: none;
+  }
+  .toast.show { opacity: 1; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.6);
+    padding: 48px 24px 28px; margin-top: 60px;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px; max-width: 1100px; margin: 0 auto 40px;
+  }
+  .footer-brand p { font-size: 0.85rem; margin-top: 12px; line-height: 1.7; }
+  .footer-col h4 { color: white; font-size: 0.88rem; font-weight: 700; margin-bottom: 14px; }
+  .footer-col a {
+    display: block; font-size: 0.83rem; color: rgba(255,255,255,0.5);
+    text-decoration: none; margin-bottom: 8px; transition: color 0.2s;
+  }
+  .footer-col a:hover { color: white; }
+  .footer-bottom {
+    max-width: 1100px; margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px; display: flex; justify-content: space-between;
+    font-size: 0.8rem; align-items: center;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .nav-links, .nav-right .btn-outline { display: none; }
+    .hamburger { display: flex; }
+    .hero { grid-template-columns: 1fr; gap: 32px; padding: 40px 20px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .lb-row { grid-template-columns: 40px 1fr 80px; }
+    .lb-row > :nth-child(4), .lb-row > :nth-child(5) { display: none; }
+    .chat-window { width: 300px; right: -10px; }
+    .mock-meta { gap: 12px; }
+  }
+
+  /* Mobile nav drawer */
+  .mobile-nav {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); z-index: 150; display: none;
+  }
+  .mobile-nav.open { display: block; }
+  .mobile-nav-inner {
+    background: var(--card); width: 260px; height: 100%;
+    padding: 24px; display: flex; flex-direction: column; gap: 6px;
+  }
+  .mobile-nav-inner a {
+    padding: 12px 16px; border-radius: 8px; font-weight: 500;
+    color: var(--ink); text-decoration: none; font-size: 0.95rem;
+  }
+  .mobile-nav-inner a:hover { background: var(--surface); }
+
+  .chip {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: rgba(37,99,235,0.08); color: var(--accent);
+    padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600;
+  }
+  .chip.green { background: #d1fae5; color: #065f46; }
+  .chip.amber { background: #fef3c7; color: #92400e; }
+
+  .ncert-badge {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: white; padding: 2px 10px; border-radius: 20px;
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo" onclick="showPage('home')">
+    <div class="logo-icon">📚</div>
+    Know Your Exam
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" class="active" onclick="showPage('home');setActive(this)">Home</a></li>
+    <li><a href="#" onclick="showPage('mock');setActive(this)">Mock Test</a></li>
+    <li><a href="#" onclick="showPage('qbank');setActive(this)">Q&A Bank</a></li>
+    <li><a href="#" onclick="showPage('downloads');setActive(this)">Downloads</a></li>
+    <li><a href="#" onclick="showPage('leaderboard');setActive(this)">Leaderboard</a></li>
+    <li><a href="#" onclick="showPage('topics');setActive(this)">Topics</a></li>
+  </ul>
+  <div class="nav-right">
+    <a class="btn btn-outline" href="#" onclick="showPage('mock');return false">▶ Start Test</a>
+    <div class="hamburger" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav" onclick="closeMobileNav(event)">
+  <div class="mobile-nav-inner">
+    <div style="font-weight:700;font-size:1rem;padding:8px 16px 16px;border-bottom:1px solid var(--border);margin-bottom:8px;">Menu</div>
+    <a href="#" onclick="showPage('home');toggleMobileNav()">🏠 Home</a>
+    <a href="#" onclick="showPage('mock');toggleMobileNav()">📝 Mock Test</a>
+    <a href="#" onclick="showPage('qbank');toggleMobileNav()">📖 Q&A Bank</a>
+    <a href="#" onclick="showPage('downloads');toggleMobileNav()">⬇ Downloads</a>
+    <a href="#" onclick="showPage('leaderboard');toggleMobileNav()">🏆 Leaderboard</a>
+    <a href="#" onclick="showPage('topics');toggleMobileNav()">🔍 Topics</a>
+    <a href="#" onclick="showPage('rating');toggleMobileNav()">⭐ Rate Us</a>
+  </div>
+</div>
+
+<!-- ════════ PAGE: HOME ════════ -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div>
+      <div class="hero-tag">🎯 NEET 2025 Preparation</div>
+      <h1>Ace NEET with<br><em>confidence</em> &amp; clarity</h1>
+      <p>100 daily mock questions, 1 lakh Q&A bank, past papers, topic search, and an AI doubt-clearing assistant — all built on NCERT.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#" onclick="showPage('mock');return false">▶ Today's Mock Test</a>
+        <a class="btn btn-ghost" href="#" onclick="showPage('qbank');return false">Browse Q&A Bank</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="num">1L<span>+</span></div>
+        <p>Questions in bank</p>
+      </div>
+      <div class="stat-card">
+        <div class="num">100<span>/day</span></div>
+        <p>Daily mock questions</p>
+      </div>
+      <div class="stat-card">
+        <div class="num">10<span>yrs</span></div>
+        <p>Past NEET papers</p>
+      </div>
+      <div class="stat-card">
+        <div class="num">24/7</div>
+        <p>AI doubt assistant</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="section" style="background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);max-width:100%;padding:56px 24px;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div class="section-head">
+        <div class="eyebrow">What's inside</div>
+        <h2>Everything you need to crack NEET</h2>
+        <p>All content strictly based on NCERT. No fluff, no fillers.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card" onclick="showPage('mock')">
+          <div class="feature-icon" style="background:#dbeafe;">📝</div>
+          <h3>Daily Mock Test</h3>
+          <p>100 real NEET-pattern questions daily with per-question timer, scoring, and instant explanations.</p>
+        </div>
+        <div class="feature-card" onclick="showPage('qbank')">
+          <div class="feature-icon" style="background:#d1fae5;">📖</div>
+          <h3>1 Lakh Q&A Bank</h3>
+          <p>Searchable bank of 1,00,000+ questions with NCERT-sourced answers and chapter references.</p>
+        </div>
+        <div class="feature-card" onclick="showPage('downloads')">
+          <div class="feature-icon" style="background:#ede9fe;">📄</div>
+          <h3>10-Year Papers</h3>
+          <p>Download NEET question papers & answer keys from 2014–2024 as free PDFs.</p>
+        </div>
+        <div class="feature-card" onclick="showPage('leaderboard')">
+          <div class="feature-icon" style="background:#fef3c7;">🏆</div>
+          <h3>Daily Leaderboard</h3>
+          <p>See where you stand. Today's mock scores ranked live so you can track your progress.</p>
+        </div>
+        <div class="feature-card" onclick="document.querySelector('.chat-bubble').click()">
+          <div class="feature-icon" style="background:#fee2e2;">🤖</div>
+          <h3>AI Doubt Assistant</h3>
+          <p>Ask any biology, chemistry, or physics doubt and get a clear, NCERT-aligned answer instantly.</p>
+        </div>
+        <div class="feature-card" onclick="showPage('topics')">
+          <div class="feature-icon" style="background:#ecfdf5;">🔍</div>
+          <h3>Topic Search</h3>
+          <p>Search any topic in Bio, Chemistry, or Physics and get concept summaries + practice questions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBJECTS -->
+  <div class="section">
+    <div class="eyebrow">Subjects Covered</div>
+    <h2 style="font-family:'Instrument Serif',serif;font-size:2rem;margin-bottom:28px;">Complete NEET syllabus. All NCERT.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <span style="font-size:1.5rem;">🧬</span>
+          <div><div style="font-weight:700;">Biology</div><div style="font-size:0.78rem;color:var(--muted);">Botany & Zoology · 90 Questions in NEET</div></div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="chip">Cell Biology</span><span class="chip">Genetics</span><span class="chip">Ecology</span>
+          <span class="chip">Plant Physiology</span><span class="chip">Human Physiology</span><span class="chip">Evolution</span>
+        </div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <span style="font-size:1.5rem;">⚗️</span>
+          <div><div style="font-weight:700;">Chemistry</div><div style="font-size:0.78rem;color:var(--muted);">Physical, Organic & Inorganic · 45 Questions</div></div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="chip badge-chem">Organic</span><span class="chip badge-chem">Inorganic</span><span class="chip badge-chem">Thermodynamics</span>
+          <span class="chip badge-chem">Equilibrium</span><span class="chip badge-chem">Electrochemistry</span>
+        </div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+          <span style="font-size:1.5rem;">⚡</span>
+          <div><div style="font-weight:700;">Physics</div><div style="font-size:0.78rem;color:var(--muted);">Mechanics, Optics & Modern Physics · 45 Q</div></div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="chip badge-bio" style="background:#ede9fe;color:#5b21b6;">Mechanics</span>
+          <span class="chip badge-bio" style="background:#ede9fe;color:#5b21b6;">Optics</span>
+          <span class="chip badge-bio" style="background:#ede9fe;color:#5b21b6;">Electrostatics</span>
+          <span class="chip badge-bio" style="background:#ede9fe;color:#5b21b6;">Modern Physics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RATE US CTA -->
+  <div style="background:linear-gradient(135deg,var(--accent),var(--accent2));color:white;padding:48px 24px;margin-top:0;">
+    <div style="max-width:600px;margin:0 auto;text-align:center;">
+      <div style="font-size:2rem;margin-bottom:12px;">⭐</div>
+      <h2 style="font-family:'Instrument Serif',serif;font-size:1.8rem;margin-bottom:10px;">How are we doing?</h2>
+      <p style="opacity:0.85;margin-bottom:24px;">Rate the platform, content quality and mock tests. Your feedback makes us better.</p>
+      <a class="btn" style="background:white;color:var(--accent);" href="#" onclick="showPage('rating');return false">Rate Know Your Exam</a>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ PAGE: MOCK TEST ════════ -->
+<div class="page" id="page-mock">
+  <div class="mock-container">
+    <div id="mock-start" style="text-align:center;padding:48px 24px;">
+      <div style="font-size:3rem;margin-bottom:16px;">📝</div>
+      <h2 style="font-family:'Instrument Serif',serif;font-size:2rem;margin-bottom:8px;">Daily NEET Mock Test</h2>
+      <p style="color:var(--muted);margin-bottom:8px;">100 questions · 180 minutes · NEET pattern</p>
+      <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:20px 0;">
+        <span class="chip green">✓ NCERT Based</span>
+        <span class="chip">🕐 Per-question timer</span>
+        <span class="chip amber">-1 negative marking</span>
+        <span class="chip">📊 Live leaderboard</span>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;max-width:420px;margin:0 auto 28px;text-align:left;box-shadow:var(--shadow);">
+        <div style="font-weight:700;margin-bottom:14px;">Test Instructions</div>
+        <ul style="list-style:none;display:grid;gap:8px;font-size:0.88rem;color:var(--muted);">
+          <li>✅ Each correct answer: <strong style="color:var(--green)">+4 marks</strong></li>
+          <li>❌ Each wrong answer: <strong style="color:var(--red)">−1 mark</strong></li>
+          <li>⏩ Unanswered: <strong>0 marks</strong></li>
+          <li>⏱ 60 seconds per question (warning at 15s)</li>
+          <li>📱 You can review and change answers</li>
+        </ul>
+      </div>
+      <button class="btn btn-primary" style="font-size:1rem;padding:14px 36px;" onclick="startMock()">Start Mock Test →</button>
+    </div>
+
+    <div id="mock-test" style="display:none;">
+      <div class="mock-header">
+        <div>
+          <div class="mock-title">NEET Daily Mock Test</div>
+          <div style="font-size:0.78rem;color:rgba(255,255,255,0.6);margin-top:2px;" id="mock-date"></div>
+        </div>
+        <div class="mock-meta">
+          <div class="q-progress">
+            <span id="q-current-label">Q 1 / 10</span>
+            <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:10%"></div></div>
+          </div>
+          <div class="timer-box" id="mock-timer">60</div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="q-meta">
+          <span class="q-badge" id="q-subject-badge">Biology</span>
+          <span class="ncert-badge" id="q-ncert-ref">NCERT Class 11 · Ch 8</span>
+          <span style="margin-left:auto;" id="q-marks-chip"><span class="chip green">+4 / −1</span></span>
+        </div>
+        <div class="q-text" id="q-text"></div>
+        <div class="q-diagram" id="q-diagram" style="display:none;"></div>
+        <div class="options" id="q-options"></div>
+      </div>
+
+      <div class="mock-nav">
+        <div class="q-palette" id="q-palette"></div>
+        <div style="display:flex;gap:8px;">
+          <button class="btn btn-ghost" id="btn-prev" onclick="prevQ()">← Prev</button>
+          <button class="btn btn-primary" id="btn-next" onclick="nextQ()">Next →</button>
+        </div>
+      </div>
+
+      <div id="answer-explanation" style="display:none;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:var(--radius);padding:18px;margin-top:14px;">
+        <div style="font-weight:700;color:var(--green);margin-bottom:6px;">✓ Explanation</div>
+        <div id="explanation-text" style="font-size:0.88rem;line-height:1.7;color:var(--ink2);"></div>
+      </div>
+    </div>
+
+    <div id="mock-result" style="display:none;">
+      <div style="padding:32px 0;">
+        <div class="result-card">
+          <div style="font-size:2rem;margin-bottom:12px;">🏆</div>
+          <div style="font-size:0.85rem;color:var(--muted);margin-bottom:6px;">Your Score</div>
+          <div class="result-score" id="final-score">320</div>
+          <div class="result-max">/ 400</div>
+          <div class="result-stats">
+            <div class="rs" style="background:#d1fae5;">
+              <div class="val" id="res-correct" style="color:var(--green);">0</div>
+              <div class="lbl">Correct</div>
+            </div>
+            <div class="rs" style="background:#fee2e2;">
+              <div class="val" id="res-wrong" style="color:var(--red);">0</div>
+              <div class="lbl">Wrong</div>
+            </div>
+            <div class="rs" style="background:#f1f5f9;">
+              <div class="val" id="res-skip" style="color:var(--muted);">0</div>
+              <div class="lbl">Skipped</div>
+            </div>
+          </div>
+          <p style="font-size:0.85rem;color:var(--muted);margin-bottom:20px;" id="result-msg"></p>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="startMock()">Retake Test</button>
+            <button class="btn btn-outline" onclick="showPage('leaderboard')">See Leaderboard</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ PAGE: Q&A BANK ════════ -->
+<div class="page" id="page-qbank">
+  <div class="section">
+    <div class="section-head">
+      <div class="eyebrow">Question Bank</div>
+      <h2>1,00,000+ NCERT Questions & Answers</h2>
+      <p>All answers are verified and referenced to NCERT chapters. Quality over quantity.</p>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" class="search-input" id="qa-search" placeholder="Search any topic, term, or keyword…" oninput="filterQA()">
+      <button class="btn btn-primary" onclick="filterQA()">Search</button>
+    </div>
+
+    <div class="subject-tabs">
+      <div class="stab active" onclick="filterSubject('all',this)">All Subjects</div>
+      <div class="stab" onclick="filterSubject('biology',this)">🧬 Biology</div>
+      <div class="stab" onclick="filterSubject('chemistry',this)">⚗️ Chemistry</div>
+      <div class="stab" onclick="filterSubject('physics',this)">⚡ Physics</div>
+    </div>
+
+    <div class="qa-list" id="qa-list"></div>
+
+    <div style="text-align:center;margin-top:28px;">
+      <p style="color:var(--muted);font-size:0.88rem;margin-bottom:12px;">Showing sample questions. Full bank of 1 lakh+ questions available.</p>
+      <a class="btn btn-outline" href="#" onclick="showPage('downloads');return false">⬇ Download Full Q&A PDF</a>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ PAGE: DOWNLOADS ════════ -->
+<div class="page" id="page-downloads">
+  <div class="section">
+    <div class="section-head">
+      <div class="eyebrow">Free Downloads</div>
+      <h2>NEET Past Papers & Q&A PDFs</h2>
+      <p>All papers with official answer keys. Download and practise offline. Completely free.</p>
+    </div>
+
+    <h3 style="font-size:1rem;font-weight:700;margin-bottom:16px;">📅 10-Year NEET Question Papers (2014–2024)</h3>
+    <div class="download-grid" style="margin-bottom:36px;">
+      <div class="download-card" onclick="downloadFile('NEET 2024')">
+        <div class="dl-icon blue">📄</div>
+        <h3>NEET 2024 — Paper + Key</h3>
+        <p>Official question paper with answer key and solutions.</p>
+        <div class="dl-meta">
+          <span class="dl-size">PDF · 4.2 MB</span>
+          <button class="btn btn-primary" style="padding:6px 14px;font-size:0.8rem;">⬇ Download</button>
+        </div>
+      </div>
+      <div class="download-card" onclick="downloadFile('NEET 2023')">
+        <div class="dl-icon blue">📄</div>
+        <h3>NEET 2023 — Paper + Key</h3>
+        <p>Official question paper with answer key and solutions.</p>
+        <div class="dl-meta">
+          <span class="dl-size">PDF · 3.9 MB</span>
+          <button class="btn btn-primary" style="padding:6px 14px;font-size:0.8rem;">⬇ Download</button>
+        </div>
+      </div>
+      <div class="download-card" onclick="downloadFile('NEET 2022')">
+        <div class="dl-icon blue">📄</div>
+        <h3>NEET 2022 — Paper + Key</h3>
+        <p>Official question paper with answer key and solutions.</p>
+        <div class="dl-meta">
+          <span class="dl-size">PDF · 3.7 MB</span>
+          <button class="btn btn-primary" style="padding:6px 14px;font-size:0.8rem;">⬇ Download</button>
+        </div>
+      </div>
+      <div class="download-card" onclick="downloadFile('NEET 2021')">
+        <div class="dl-icon blue">📄</div>
+        <h3>NEET 2021 — Paper + Key</h3>
+        <p>Official question paper with answer key and solutions.</p>
+        <div class="dl-meta">
+          <span class="dl-size">PDF · 3.5 MB</span>
+          <button class="btn btn-primary" style="padding:6px 14px;font-size:0.8rem;">⬇ Download</button>
+        </div>
+      </div>
+      <div class="download-card" onclick="downloadFile('NEET 2020')">
+        <div class="dl-icon blue">📄</div>
+        <h3>NEET 2020 — Paper + Key</h3>
+        <p>Official question paper with answer key and solutions.</p>
+        <div class="dl-meta">
+          <span class="dl-size">PDF · 3.3 MB</span>
+          <button class="btn btn-primary" style="padding:6px 14px;font-size:0.8rem;">⬇ Download</button>
+        </div>
+      </div>
+      <div class="download-card" onclick="downloadFile('NEET 2019')">
+        <div class="dl-icon blue">📄</div>
+        <h3>NEET 2019 — Paper + Key</h3>
+        <p>Official question paper with answer key and solutions.</p>
+        <div class="dl-meta">
+          <span class="dl-size">PDF · 3.2 MB</span>
+          <button class="btn btn-primary" style="padding:6px 14px;font-size:0.8rem;">⬇ Download</button>
+        </div>
+      </div>
+      <div class="download-card" onclick="downloadFile('NEET 2018')">
+        <div class="dl-icon blue">📄</div>
+        <h3>NEET 2018 — Paper + Key</h3>
+        <p>Official question paper with answer key and solutions.</p>
+        <div class="dl-meta">
+          <span class="dl-size">PDF · 3.0 MB</span>
+          <button class="btn btn-primary" style="padding:6px 14px;font-size:0.8rem;">⬇ Download</button>
+        </div>
+      </div>
+      <div class="download-card" onclick="downloadFile('NEET 2017')">
+        <div class="dl-icon blue">📄</div>
+        <h3>NEET 2017 — Paper + Key</h3>
+        <p>Official question paper with answer key and solutions.</p>
+        <div class="dl-meta">
+          <span class="dl-size">PDF · 2.9 MB</span>
+          <button class="btn btn-primary" style="padding:6px 14px;font-size:0.8rem;">⬇ Download</button>
+        </div>
+      </div>
+      <div class="download-card" onclick="downloadFile('NEET 2016')">
+        <div class="dl-icon blue">📄</div>
+        <h3>NEET 2016 — Paper + Key</h3>
+        <p>Official question paper with answer key and solutions.</p>
+        <div class="dl-meta">
+          <span class="dl-size">PDF · 2.8 MB</span>
+          <button class="btn btn-primary" style="padding:6px 14px;font-size:0.8rem;">⬇ Download</button>
+        </div>
+      </div>
+      <div class="download-card" onclick="downloadFile('NEET 2015')">
+        <div class="dl-icon blue">📄</div>
+        <h3>NEET 2015 — Paper + Key</h3>
+        <p>Official question paper with answer key and solutions.</p>
+        <div class="dl-meta">
+          <span class="dl-size">PDF · 2.7 MB</span>
+          <button class="btn btn-primary" style="padding:6px 14px;font-size:0.8rem;">⬇ Download</button>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size:1rem;font-weight:700;margin-bottom:16px;">📚 Q&A Practice PDFs</h3>
+    <div class="download-grid">
+      <div class="download-card" onclick="downloadFile('Biology Q&A PDF')">
+        <div class="dl-icon" style="background:linear-gradient(135deg,#059669,#10b981);">🧬</div>
+        <h3>Biology — 35,000 Q&A</h3>
+        <p>Complete Biology Q&A bank with NCERT chapter references and diagrams.</p>
+        <div class="dl-meta">
+          <span class="dl-size">PDF · 28 MB</span>
+          <button class="btn btn-primary" style="padding:6px 14px;font-size:0.8rem;">⬇ Download</button>
+        </div>
+      </div>
+      <div class="download-card" onclick="downloadFile('Chemistry Q&A PDF')">
+        <div class="dl-icon" style="background:linear-gradient(135deg,#2563eb,#3b82f6);">⚗️</div>
+        <h3>Chemistry — 35,000 Q&A</h3>
+        <p>Physical, organic & inorganic chemistry questions with detailed answers.</p>
+        <div class="dl-meta">
+          <span class="dl-size">PDF · 24 MB</span>
+          <button class="btn btn-primary" style="padding:6px 14px;font-size:0.8rem;">⬇ Download</button>
+        </div>
+      </div>
+      <div class="download-card" onclick="downloadFile('Physics Q&A PDF')">
+        <div class="dl-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">⚡</div>
+        <h3>Physics — 30,000 Q&A</h3>
+        <p>Mechanics, optics, electrostatics and modern physics Q&A with worked solutions.</p>
+        <div class="dl-meta">
+          <span class="dl-size">PDF · 22 MB</span>
+          <button class="btn btn-primary" style="padding:6px 14px;font-size:0.8rem;">⬇ Download</button>
+        </div>
+      </div>
+      <div class="download-card" onclick="downloadFile('Mock Test PDFs')">
+        <div class="dl-icon" style="background:linear-gradient(135deg,#d97706,#fbbf24);">📝</div>
+        <h3>30 Full Mock Tests PDF</h3>
+        <p>30 printable full-length mock tests with answer keys and detailed solutions.</p>
+        <div class="dl-meta">
+          <span class="dl-size">PDF · 18 MB</span>
+          <button class="btn btn-primary" style="padding:6px 14px;font-size:0.8rem;">⬇ Download</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ PAGE: LEADERBOARD ════════ -->
+<div class="page" id="page-leaderboard">
+  <div class="section">
+    <div class="section-head">
+      <div class="eyebrow">Daily Rankings</div>
+      <h2>Leaderboard — Today's Mock Test</h2>
+      <p id="lb-date-label">Updated live after each submission</p>
+    </div>
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;align-items:center;">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 18px;font-size:0.85rem;">
+        <span style="color:var(--muted);">Total students today: </span><strong id="lb-total">1,247</strong>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 18px;font-size:0.85rem;">
+        <span style="color:var(--muted);">Highest score: </span><strong style="color:var(--accent);">396 / 400</strong>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 18px;font-size:0.85rem;">
+        <span style="color:var(--muted);">Average score: </span><strong>248 / 400</strong>
+      </div>
+    </div>
+
+    <div class="leaderboard-table" id="leaderboard-table"></div>
+    <p style="text-align:center;color:var(--muted);font-size:0.82rem;margin-top:16px;">Scores update after you submit a mock test. Complete the daily test to appear on the leaderboard.</p>
+  </div>
+</div>
+
+<!-- ════════ PAGE: TOPICS ════════ -->
+<div class="page" id="page-topics">
+  <div class="section">
+    <div class="section-head">
+      <div class="eyebrow">Topic Search</div>
+      <h2>Search any topic, get instant answers</h2>
+      <p>Covers complete NEET syllabus. Powered by NCERT content.</p>
+    </div>
+    <div class="search-bar" style="margin-bottom:10px;">
+      <input type="text" class="search-input" id="topic-search" placeholder="e.g. Mitosis, Periodic Table, Newton's Laws…" oninput="searchTopics()">
+    </div>
+    <div class="subject-tabs" style="margin-bottom:24px;">
+      <div class="stab active" onclick="filterTopics('all',this)">All</div>
+      <div class="stab" onclick="filterTopics('biology',this)">🧬 Biology</div>
+      <div class="stab" onclick="filterTopics('chemistry',this)">⚗️ Chemistry</div>
+      <div class="stab" onclick="filterTopics('physics',this)">⚡ Physics</div>
+    </div>
+
+    <div id="topic-answer-box" style="display:none;background:var(--card);border:1px solid #bfdbfe;border-radius:var(--radius);padding:24px;margin-bottom:24px;box-shadow:var(--shadow);">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+        <div style="font-weight:700;font-size:1.05rem;" id="topic-answer-title"></div>
+        <span class="ncert-badge" id="topic-ncert-ref"></span>
+      </div>
+      <div id="topic-answer-body" style="font-size:0.92rem;line-height:1.8;color:var(--ink2);"></div>
+    </div>
+
+    <div class="topic-grid" id="topic-grid"></div>
+  </div>
+</div>
+
+<!-- ════════ PAGE: RATING ════════ -->
+<div class="page" id="page-rating">
+  <div class="section" style="max-width:640px;">
+    <div class="section-head">
+      <div class="eyebrow">Your Feedback</div>
+      <h2>Rate Know Your Exam</h2>
+      <p>Help us improve by sharing your experience. Takes less than a minute.</p>
+    </div>
+
+    <div style="display:grid;gap:20px;">
+      <div class="rating-section">
+        <h3 style="font-weight:700;margin-bottom:4px;">Overall Rating</h3>
+        <p style="font-size:0.85rem;color:var(--muted);">How would you rate this platform overall?</p>
+        <div class="stars" id="overall-stars">
+          <span class="star" onclick="setRating('overall',1)">★</span>
+          <span class="star" onclick="setRating('overall',2)">★</span>
+          <span class="star" onclick="setRating('overall',3)">★</span>
+          <span class="star" onclick="setRating('overall',4)">★</span>
+          <span class="star" onclick="setRating('overall',5)">★</span>
+        </div>
+        <div class="rating-cats">
+          <div class="rating-row">
+            <span class="rating-label">Content Quality</span>
+            <div class="mini-stars" id="content-stars">
+              <span class="mini-star" onclick="setRating('content',1)">★</span>
+              <span class="mini-star" onclick="setRating('content',2)">★</span>
+              <span class="mini-star" onclick="setRating('content',3)">★</span>
+              <span class="mini-star" onclick="setRating('content',4)">★</span>
+              <span class="mini-star" onclick="setRating('content',5)">★</span>
+            </div>
+          </div>
+          <div class="rating-row">
+            <span class="rating-label">Mock Test Quality</span>
+            <div class="mini-stars" id="mock-stars">
+              <span class="mini-star" onclick="setRating('mock',1)">★</span>
+              <span class="mini-star" onclick="setRating('mock',2)">★</span>
+              <span class="mini-star" onclick="setRating('mock',3)">★</span>
+              <span class="mini-star" onclick="setRating('mock',4)">★</span>
+              <span class="mini-star" onclick="setRating('mock',5)">★</span>
+            </div>
+          </div>
+          <div class="rating-row">
+            <span class="rating-label">Ease of Use</span>
+            <div class="mini-stars" id="ux-stars">
+              <span class="mini-star" onclick="setRating('ux',1)">★</span>
+              <span class="mini-star" onclick="setRating('ux',2)">★</span>
+              <span class="mini-star" onclick="setRating('ux',3)">★</span>
+              <span class="mini-star" onclick="setRating('ux',4)">★</span>
+              <span class="mini-star" onclick="setRating('ux',5)">★</span>
+            </div>
+          </div>
+          <div class="rating-row">
+            <span class="rating-label">AI Doubt Assistant</span>
+            <div class="mini-stars" id="ai-stars">
+              <span class="mini-star" onclick="setRating('ai',1)">★</span>
+              <span class="mini-star" onclick="setRating('ai',2)">★</span>
+              <span class="mini-star" onclick="setRating('ai',3)">★</span>
+              <span class="mini-star" onclick="setRating('ai',4)">★</span>
+              <span class="mini-star" onclick="setRating('ai',5)">★</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="rating-section">
+        <h3 style="font-weight:700;margin-bottom:4px;">Your Feedback</h3>
+        <p style="font-size:0.85rem;color:var(--muted);margin-bottom:12px;">Any suggestions or comments?</p>
+        <textarea id="feedback-text" placeholder="Tell us what you think, what to improve, or what you love…"
+          style="width:100%;height:100px;padding:12px;border:1.5px solid var(--border);border-radius:10px;font-family:'Space Grotesk',sans-serif;font-size:0.9rem;resize:vertical;outline:none;"></textarea>
+        <button class="btn btn-primary" style="margin-top:12px;width:100%;justify-content:center;" onclick="submitRating()">Submit Feedback</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ CHATBOT ════════ -->
+<div class="chatbot-widget">
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-header">
+      <div class="chat-avatar">🤖</div>
+      <div class="chat-info">
+        <div class="chat-name">KYE Doubt Assistant</div>
+        <div class="chat-status">● Online · NCERT powered</div>
+      </div>
+      <span style="cursor:pointer;font-size:1.2rem;opacity:0.7;" onclick="toggleChat()">✕</span>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg bot">👋 Hi! I'm your NEET doubt assistant. Ask me anything about Biology, Chemistry, or Physics!</div>
+      <div class="msg bot">Try: <em>"Explain meiosis"</em> or <em>"What is Le Chatelier's principle?"</em></div>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" class="chat-input" id="chatInput" placeholder="Type your doubt…" onkeydown="if(event.key==='Enter')sendChat()">
+      <button class="chat-send" onclick="sendChat()">➤</button>
+    </div>
+  </div>
+  <div class="chat-bubble" onclick="toggleChat()">🤖</div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo" style="color:white;" onclick="showPage('home')">
+        <div class="logo-icon">📚</div> Know Your Exam
+      </a>
+      <p>India's most focused NEET preparation platform. All content based on NCERT. Zero cost, maximum quality.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Prepare</h4>
+      <a href="#" onclick="showPage('mock')">Daily Mock Test</a>
+      <a href="#" onclick="showPage('qbank')">Q&A Bank</a>
+      <a href="#" onclick="showPage('topics')">Topic Search</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="#" onclick="showPage('downloads')">Past Papers</a>
+      <a href="#" onclick="showPage('downloads')">Q&A PDFs</a>
+      <a href="#" onclick="showPage('leaderboard')">Leaderboard</a>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="#" onclick="showPage('rating')">Rate Us</a>
+      <a href="#" onclick="document.querySelector('.chat-bubble').click()">AI Assistant</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Know Your Exam. Free for all NEET aspirants.</span>
+    <span style="display:flex;align-items:center;gap:6px;">
+      <span class="ncert-badge">NCERT</span>
+      <span style="font-size:0.78rem;opacity:0.6;">All content sourced from trusted resources</span>
+    </span>
+  </div>
+</footer>
+
+<script>
+// ══════════════════════════════
+// DATA
+// ══════════════════════════════
+const questions = [
+  {
+    id:1, subject:"Biology", ncert:"Class 11 · Ch 10 – Cell Cycle",
+    text:"During which phase of mitosis do chromosomes align at the metaphase plate?",
+    diagram: null,
+    options:["Prophase","Metaphase","Anaphase","Telophase"],
+    correct:1,
+    explanation:"In Metaphase, chromosomes align at the cell's equatorial plate (metaphase plate) due to spindle fibres attaching to centromeres. This is the phase used to study chromosome number and morphology."
+  },
+  {
+    id:2, subject:"Chemistry", ncert:"Class 11 · Ch 14 – Equilibrium",
+    text:"According to Le Chatelier's principle, increasing pressure in the reaction N₂ + 3H₂ ⇌ 2NH₃ will:",
+    diagram: null,
+    options:["Shift equilibrium to the left","Shift equilibrium to the right","Have no effect","Decrease temperature"],
+    correct:1,
+    explanation:"Increasing pressure favours the side with fewer moles of gas. The left side has 4 moles (1+3) and the right side has 2 moles. So the equilibrium shifts to the right, producing more NH₃."
+  },
+  {
+    id:3, subject:"Biology", ncert:"Class 11 · Ch 13 – Photosynthesis",
+    text:"The primary acceptor of CO₂ in C3 plants during the Calvin cycle is:",
+    diagram:`<svg width="200" height="80" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="30" width="80" height="30" rx="6" fill="#bbf7d0" stroke="#059669"/>
+      <text x="50" y="50" text-anchor="middle" font-size="11" fill="#065f46">RuBP (C5)</text>
+      <text x="100" y="45" font-size="18" fill="#2563eb">→</text>
+      <rect x="110" y="30" width="80" height="30" rx="6" fill="#dbeafe" stroke="#2563eb"/>
+      <text x="150" y="50" text-anchor="middle" font-size="11" fill="#1e40af">3-PGA (C3)</text>
+      <text x="50" y="22" text-anchor="middle" font-size="10" fill="#6b7280">+ CO₂ (RuBisCO)</text>
+    </svg>
+    <div>Calvin Cycle – Carbon Fixation Step</div>`,
+    options:["Oxaloacetate (OAA)","Phosphoglycerate (PGA)","Ribulose bisphosphate (RuBP)","Pyruvate"],
+    correct:2,
+    explanation:"In C3 plants, CO₂ is fixed by the enzyme RuBisCO (Ribulose-1,5-bisphosphate carboxylase/oxygenase). CO₂ combines with RuBP (5-carbon) to give two molecules of 3-phosphoglycerate (3-PGA)."
+  },
+  {
+    id:4, subject:"Physics", ncert:"Class 11 · Ch 6 – Work & Energy",
+    text:"A body of mass 2 kg is lifted through a height of 5 m. What is the work done against gravity? (g = 10 m/s²)",
+    diagram: null,
+    options:["50 J","100 J","25 J","200 J"],
+    correct:1,
+    explanation:"Work done against gravity = mgh = 2 × 10 × 5 = 100 J. This is the potential energy gained by the body when lifted to height h."
+  },
+  {
+    id:5, subject:"Biology", ncert:"Class 12 · Ch 5 – Principles of Inheritance",
+    text:"In a monohybrid cross between two heterozygous tall plants (Tt × Tt), what is the phenotypic ratio?",
+    diagram:`<svg width="200" height="100" xmlns="http://www.w3.org/2000/svg">
+      <text x="10" y="20" font-size="12" font-weight="bold" fill="#1e2130">Punnett Square</text>
+      <rect x="60" y="30" width="40" height="30" fill="#dbeafe" stroke="#94a3b8"/>
+      <rect x="100" y="30" width="40" height="30" fill="#fef3c7" stroke="#94a3b8"/>
+      <rect x="60" y="60" width="40" height="30" fill="#fef3c7" stroke="#94a3b8"/>
+      <rect x="100" y="60" width="40" height="30" fill="#fce7f3" stroke="#94a3b8"/>
+      <text x="80" y="50" text-anchor="middle" font-size="11" fill="#1e40af">TT</text>
+      <text x="120" y="50" text-anchor="middle" font-size="11">Tt</text>
+      <text x="80" y="80" text-anchor="middle" font-size="11">Tt</text>
+      <text x="120" y="80" text-anchor="middle" font-size="11" fill="#9d174d">tt</text>
+    </svg>
+    <div>Monohybrid Cross (Tt × Tt)</div>`,
+    options:["1:2:1","3:1","1:1","2:1"],
+    correct:1,
+    explanation:"In Tt × Tt cross, offspring are TT:Tt:tt in ratio 1:2:1 by genotype, but phenotypically, TT and Tt both show Tall (dominant), while tt shows Dwarf. So the phenotypic ratio is 3 Tall : 1 Dwarf = 3:1."
+  },
+  {
+    id:6, subject:"Chemistry", ncert:"Class 12 · Ch 3 – Electrochemistry",
+    text:"The standard electrode potential of hydrogen electrode (SHE) is:",
+    diagram: null,
+    options:["+ 0.34 V","+1.23 V","0.00 V","−0.76 V"],
+    correct:2,
+    explanation:"The Standard Hydrogen Electrode (SHE) is assigned a standard electrode potential of exactly 0.00 V by convention. It serves as the reference point for measuring electrode potentials of all other half-cells."
+  },
+  {
+    id:7, subject:"Biology", ncert:"Class 11 · Ch 14 – Breathing",
+    text:"The tidal volume of a healthy adult human at rest is approximately:",
+    diagram: null,
+    options:["1200 mL","500 mL","2500 mL","100 mL"],
+    correct:1,
+    explanation:"Tidal volume (TV) is the volume of air inspired or expired with each normal breath. In a healthy adult at rest, tidal volume is approximately 500 mL (0.5 L)."
+  },
+  {
+    id:8, subject:"Physics", ncert:"Class 12 · Ch 10 – Wave Optics",
+    text:"In Young's double-slit experiment, if the distance between the slits is halved, the fringe width will:",
+    diagram: null,
+    options:["Halve","Remain same","Double","Quadruple"],
+    correct:2,
+    explanation:"Fringe width β = λD/d. If d is halved (d → d/2), then β = λD/(d/2) = 2λD/d. So fringe width doubles. Slit separation and fringe width are inversely proportional."
+  },
+  {
+    id:9, subject:"Chemistry", ncert:"Class 11 · Ch 6 – Thermodynamics",
+    text:"For a spontaneous process at constant temperature and pressure, the Gibbs free energy change (ΔG) must be:",
+    diagram: null,
+    options:["ΔG > 0","ΔG = 0","ΔG < 0","ΔG = ΔH"],
+    correct:2,
+    explanation:"A process is spontaneous at constant T and P when ΔG < 0 (negative). At equilibrium, ΔG = 0. When ΔG > 0, the process is non-spontaneous (reverse process is spontaneous)."
+  },
+  {
+    id:10, subject:"Biology", ncert:"Class 12 · Ch 2 – Sexual Reproduction",
+    text:"The number of chromosomes in a human secondary oocyte at the time of ovulation is:",
+    diagram: null,
+    options:["46 (diploid)","23 (haploid)","92 (tetraploid)","44"],
+    correct:1,
+    explanation:"The secondary oocyte is arrested at Metaphase II of meiosis. It has 23 chromosomes (haploid, n=23) but each chromosome consists of 2 sister chromatids, so it has 23 chromosomes but 46 chromatids."
+  }
+];
+
+const qaBank = [
+  { subject:"biology", q:"What is the powerhouse of the cell?", a:"The mitochondrion is called the powerhouse of the cell because it generates most of the cell's supply of ATP (adenosine triphosphate) through cellular respiration. ATP is used as a source of chemical energy.", ncert:"NCERT Class 11 · Ch 8 – Cell: The Unit of Life" },
+  { subject:"biology", q:"Explain the structure of DNA.", a:"DNA (Deoxyribonucleic Acid) is a double-helix molecule. It consists of two antiparallel polynucleotide strands wound around each other. Each strand is made of nucleotides containing deoxyribose sugar, a phosphate group, and one of four nitrogenous bases: Adenine (A), Thymine (T), Guanine (G), Cytosine (C). Base pairing: A=T (2 H-bonds), G≡C (3 H-bonds).", ncert:"NCERT Class 12 · Ch 6 – Molecular Basis of Inheritance" },
+  { subject:"biology", q:"What is the difference between mitosis and meiosis?", a:"Mitosis: produces 2 genetically identical daughter cells; occurs in somatic cells; maintains diploid (2n) chromosome number; purpose is growth and repair. Meiosis: produces 4 genetically diverse cells; occurs in reproductive cells; results in haploid (n) cells; purpose is gamete formation. Key difference: meiosis has two divisions (Meiosis I & II) with crossing-over in Prophase I.", ncert:"NCERT Class 11 · Ch 10 – Cell Cycle & Cell Division" },
+  { subject:"chemistry", q:"What is Avogadro's number?", a:"Avogadro's number (Nₐ) is 6.022 × 10²³. It represents the number of particles (atoms, molecules, ions) present in one mole of any substance. It was determined by Amedeo Avogadro and is a fundamental constant in chemistry.", ncert:"NCERT Class 11 · Ch 1 – Some Basic Concepts of Chemistry" },
+  { subject:"chemistry", q:"Explain hybridization in carbon.", a:"Hybridization is mixing of atomic orbitals to form new hybrid orbitals. Carbon shows three types: sp³ (methane, tetrahedral, 109.5°), sp² (ethylene, trigonal planar, 120°, double bond), sp (acetylene, linear, 180°, triple bond). Number of hybrid orbitals = number of atomic orbitals mixed.", ncert:"NCERT Class 11 · Ch 4 – Chemical Bonding" },
+  { subject:"chemistry", q:"What is Le Chatelier's principle?", a:"Le Chatelier's principle states: if a dynamic equilibrium is disturbed by changing conditions (concentration, temperature, pressure), the position of equilibrium shifts to counteract the change and restore equilibrium. Example: in N₂+3H₂⇌2NH₃, increasing pressure shifts equilibrium right (fewer gas moles); increasing temperature shifts it left (exothermic reaction).", ncert:"NCERT Class 11 · Ch 7 – Equilibrium" },
+  { subject:"physics", q:"State Newton's three laws of motion.", a:"1st Law (Inertia): A body at rest stays at rest and a body in motion stays in motion unless acted upon by an external force. 2nd Law: F = ma (Force = mass × acceleration). 3rd Law: For every action there is an equal and opposite reaction. These laws form the foundation of classical mechanics.", ncert:"NCERT Class 11 · Ch 5 – Laws of Motion" },
+  { subject:"physics", q:"What is the photoelectric effect?", a:"The photoelectric effect is the emission of electrons from a metal surface when light of sufficient frequency falls on it. Key observations: electron emission requires minimum threshold frequency (ν₀); KE of emitted electrons = hν − φ (where φ = work function); Einstein explained it using photon concept (E = hν). This proved the quantum nature of light.", ncert:"NCERT Class 12 · Ch 11 – Dual Nature of Radiation" },
+  { subject:"physics", q:"Define Ohm's Law.", a:"Ohm's Law states that the current (I) flowing through a conductor is directly proportional to the potential difference (V) across it, provided temperature and other physical conditions remain constant. V = IR, where R is resistance. SI unit of resistance is Ohm (Ω). Not all materials obey Ohm's Law (e.g., semiconductors, diodes).", ncert:"NCERT Class 12 · Ch 3 – Current Electricity" },
+  { subject:"biology", q:"What is the role of ribosomes in protein synthesis?", a:"Ribosomes are the sites of protein synthesis (translation). They read mRNA and translate the genetic code into proteins. Prokaryotic ribosomes: 70S (30S + 50S subunits). Eukaryotic ribosomes: 80S (40S + 60S subunits). Found free in cytoplasm (make cytoplasmic proteins) or on rough ER (make secretory/membrane proteins).", ncert:"NCERT Class 11 · Ch 8 – Cell: The Unit of Life" },
+];
+
+const topics = [
+  { subject:"biology", name:"Cell Biology", desc:"Cell structure, organelles, cell membrane", count:2840 },
+  { subject:"biology", name:"Cell Division – Mitosis & Meiosis", desc:"Phases, significance, comparison", count:1920 },
+  { subject:"biology", name:"Genetics & Heredity", desc:"Mendel's laws, Punnett squares, linkage", count:3120 },
+  { subject:"biology", name:"Photosynthesis", desc:"Light reactions, Calvin cycle, C4 & CAM", count:2200 },
+  { subject:"biology", name:"Human Physiology", desc:"Digestion, respiration, circulation, excretion", count:4100 },
+  { subject:"biology", name:"Molecular Biology", desc:"DNA, RNA, replication, transcription, translation", count:2600 },
+  { subject:"biology", name:"Ecology", desc:"Ecosystems, food chains, nutrient cycles", count:1800 },
+  { subject:"biology", name:"Evolution", desc:"Darwin, natural selection, speciation", count:1400 },
+  { subject:"chemistry", name:"Atomic Structure", desc:"Bohr model, quantum numbers, orbitals", count:2100 },
+  { subject:"chemistry", name:"Chemical Bonding", desc:"Ionic, covalent, hybridization, VSEPR", count:2400 },
+  { subject:"chemistry", name:"Thermodynamics", desc:"ΔH, ΔS, ΔG, Hess's law, Kirchhoff's law", count:1900 },
+  { subject:"chemistry", name:"Equilibrium", desc:"Le Chatelier, Kp, Kc, ionic equilibrium", count:2200 },
+  { subject:"chemistry", name:"Organic Chemistry", desc:"Functional groups, reactions, mechanisms", count:3800 },
+  { subject:"chemistry", name:"Electrochemistry", desc:"Galvanic cells, SHE, Nernst equation", count:1600 },
+  { subject:"physics", name:"Mechanics", desc:"Newton's laws, kinematics, work, energy", count:2800 },
+  { subject:"physics", name:"Thermodynamics", desc:"Gas laws, heat engines, entropy", count:1700 },
+  { subject:"physics", name:"Electrostatics", desc:"Coulomb's law, field, potential, capacitors", count:2300 },
+  { subject:"physics", name:"Current Electricity", desc:"Ohm's law, Kirchhoff's laws, circuits", count:2000 },
+  { subject:"physics", name:"Optics", desc:"Reflection, refraction, lenses, wave optics", count:2500 },
+  { subject:"physics", name:"Modern Physics", desc:"Photoelectric effect, Bohr model, radioactivity", count:1900 },
+];
+
+const topicAnswers = {
+  "cell biology": { title:"Cell Biology", ncert:"Class 11 · Ch 8", body:"A cell is the basic structural and functional unit of life. Prokaryotic cells (bacteria) lack a membrane-bound nucleus, while eukaryotic cells (plants, animals, fungi) have a nucleus. Key organelles include: Mitochondria (ATP production), Ribosomes (protein synthesis), Endoplasmic Reticulum (transport), Golgi Apparatus (packaging & secretion), Lysosomes (digestion), Chloroplasts (photosynthesis in plants). Cell membrane is a fluid mosaic model of phospholipid bilayer with embedded proteins." },
+  "mitosis": { title:"Mitosis", ncert:"Class 11 · Ch 10", body:"Mitosis is the type of cell division that results in two daughter cells with the same number of chromosomes as the parent cell (2n → 2n). Phases: Prophase (chromosomes condense, spindle forms), Metaphase (chromosomes align at equatorial plate), Anaphase (sister chromatids separate to poles), Telophase (nuclear envelope reforms, cytokinesis). Significance: growth, repair, and asexual reproduction." },
+  "photosynthesis": { title:"Photosynthesis", ncert:"Class 11 · Ch 13", body:"Photosynthesis is the process by which green plants, algae, and some bacteria convert light energy into chemical energy (glucose). Equation: 6CO₂ + 6H₂O + light energy → C₆H₁₂O₆ + 6O₂. Light reactions (in thylakoid): water splitting, ATP & NADPH production. Dark reactions/Calvin cycle (in stroma): CO₂ fixation by RuBisCO, glucose synthesis. C3 plants fix CO₂ into 3-PGA; C4 plants first fix into OAA (4-carbon compound)." },
+  "genetics": { title:"Genetics & Heredity", ncert:"Class 12 · Ch 5", body:"Gregor Mendel's Laws: Law of Dominance (dominant allele masks recessive), Law of Segregation (alleles separate during gamete formation), Law of Independent Assortment (genes on different chromosomes assort independently). Phenotypic ratios: monohybrid 3:1, dihybrid 9:3:3:1. Incomplete dominance shows 1:2:1 phenotypic ratio. Codominance: both alleles expressed (e.g., AB blood group)." },
+  "newton": { title:"Newton's Laws of Motion", ncert:"Class 11 · Ch 5", body:"1st Law (Law of Inertia): An object stays at rest or uniform motion unless acted on by a net external force. 2nd Law: F = ma. The rate of change of momentum is proportional to the applied force. 3rd Law: Every action has an equal and opposite reaction. Important derivations: impulse = Ft = Δp, conservation of momentum in collisions." },
+  "ohm": { title:"Ohm's Law", ncert:"Class 12 · Ch 3", body:"Ohm's Law: V = IR. Current through a conductor is proportional to the potential difference at constant temperature. Resistance R = ρL/A (ρ=resistivity, L=length, A=cross-section). Series combination: R_total = R₁+R₂+R₃. Parallel combination: 1/R = 1/R₁+1/R₂+1/R₃. Kirchhoff's Laws: KCL (sum of currents at a junction = 0), KVL (sum of EMFs = sum of IR drops in a loop)." },
+  "equilibrium": { title:"Chemical Equilibrium", ncert:"Class 11 · Ch 7", body:"Dynamic equilibrium: rate of forward = rate of backward reaction. Equilibrium constant Kc = [products]/[reactants] (concentration terms). For aA+bB⇌cC+dD: Kc = [C]ᶜ[D]ᵈ/[A]ᵃ[B]ᵇ. Le Chatelier's Principle: if equilibrium is disturbed, it shifts to oppose the change. Increasing concentration of reactant → shifts right; increasing pressure → shifts to side with fewer moles of gas; increasing temperature → shifts in endothermic direction." },
+};
+
+const leaderboardData = [
+  { name:"Aditya Kumar", city:"Kota, Rajasthan", score:396, time:"2h 48m", correct:99, avatar:"AK", color:"#dbeafe" },
+  { name:"Priya Sharma", city:"Chennai, TN", score:388, time:"2h 52m", correct:97, avatar:"PS", color:"#fce7f3" },
+  { name:"Rohan Verma", city:"Delhi", score:380, time:"3h 00m", correct:95, avatar:"RV", color:"#d1fae5" },
+  { name:"Sneha Patel", city:"Ahmedabad, GJ", score:372, time:"2h 55m", correct:93, avatar:"SP", color:"#fef3c7" },
+  { name:"Arjun Nair", city:"Kochi, KL", score:360, time:"2h 45m", correct:90, avatar:"AN", color:"#ede9fe" },
+  { name:"Meera Reddy", city:"Hyderabad, TS", score:356, time:"3h 00m", correct:89, avatar:"MR", color:"#fee2e2" },
+  { name:"Vikram Singh", city:"Chandigarh, PB", score:348, time:"2h 58m", correct:87, avatar:"VS", color:"#ecfdf5" },
+  { name:"Ananya Das", city:"Kolkata, WB", score:340, time:"3h 00m", correct:85, avatar:"AD", color:"#fef9c3" },
+  { name:"Karthik Raj", city:"Coimbatore, TN", score:332, time:"2h 50m", correct:83, avatar:"KR", color:"#dbeafe" },
+  { name:"Divya Menon", city:"Thiruvananthapuram, KL", score:320, time:"2h 57m", correct:80, avatar:"DM", color:"#fce7f3" },
+];
+
+const chatResponses = {
+  mitosis: "**Mitosis** has 4 phases: **Prophase** (chromosomes condense), **Metaphase** (align at plate), **Anaphase** (chromatids separate), **Telophase** (new nuclei form). Result: 2 genetically identical daughter cells (2n→2n). 📖 NCERT Class 11 Ch 10",
+  meiosis: "**Meiosis** has 2 divisions. Meiosis I separates homologous chromosomes (2n→n); Meiosis II separates sister chromatids. Result: 4 haploid cells (n). Crossing-over in Prophase I creates genetic variation. 📖 NCERT Class 12 Ch 3",
+  photosynthesis: "**Photosynthesis** = 6CO₂ + 6H₂O + light → C₆H₁₂O₆ + 6O₂. Light reactions happen in thylakoid (produce ATP, NADPH). Calvin cycle in stroma (fixes CO₂ via RuBisCO into 3-PGA). 📖 NCERT Class 11 Ch 13",
+  dna: "**DNA** is a double helix. Two antiparallel strands with base pairs: A=T (2 H-bonds) and G≡C (3 H-bonds). Backbone: deoxyribose sugar + phosphate. Template strand used in transcription. 📖 NCERT Class 12 Ch 6",
+  newton: "**Newton's Laws**: 1st – inertia (F=0 → a=0), 2nd – F=ma, 3rd – action-reaction. Key formula: Impulse = FΔt = Δp. Conservation of momentum in collisions. 📖 NCERT Class 11 Ch 5",
+  ohm: "**Ohm's Law**: V = IR. Resistance R = ρL/A. Series: R = R₁+R₂. Parallel: 1/R = 1/R₁+1/R₂. Kirchhoff's KCL: ΣI=0 at junction. KVL: ΣEMF = ΣIR in a loop. 📖 NCERT Class 12 Ch 3",
+  equilibrium: "**Le Chatelier's Principle**: Increase reactant concentration → shifts right. Increase pressure → shifts to fewer moles side. Increase temperature → shifts endothermic direction. Kc = [products]^coeff / [reactants]^coeff. 📖 NCERT Class 11 Ch 7",
+  default: "Great question! For the most accurate answer, check the relevant NCERT chapter. I can help with: Mitosis, Meiosis, Photosynthesis, DNA, Genetics, Newton's Laws, Ohm's Law, Equilibrium, and more. Try typing any of these topics!"
+};
+
+// ══════════════════════════════
+// NAVIGATION
+// ══════════════════════════════
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  window.scrollTo(0,0);
+  if(id==='leaderboard') renderLeaderboard();
+  if(id==='qbank') renderQA('all','');
+  if(id==='topics') renderTopics('all','');
+}
+
+function setActive(el) {
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+function closeMobileNav(e) {
+  if(e.target === document.getElementById('mobileNav'))
+    document.getElementById('mobileNav').classList.remove('open');
+}
+
+// ══════════════════════════════
+// MOCK TEST
+// ══════════════════════════════
+let currentQ = 0, answers = {}, timerInterval = null, timeLeft = 60, testStarted = false;
+
+function startMock() {
+  currentQ = 0; answers = {}; testStarted = true;
+  document.getElementById('mock-start').style.display = 'none';
+  document.getElementById('mock-result').style.display = 'none';
+  document.getElementById('mock-test').style.display = 'block';
+  const now = new Date();
+  document.getElementById('mock-date').textContent = now.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  renderPalette();
+  loadQuestion(0);
+}
+
+function loadQuestion(i) {
+  clearInterval(timerInterval);
+  const q = questions[i];
+  document.getElementById('q-current-label').textContent = `Q ${i+1} / ${questions.length}`;
+  document.getElementById('progress-fill').style.width = `${((i+1)/questions.length)*100}%`;
+  document.getElementById('q-subject-badge').textContent = q.subject;
+  document.getElementById('q-subject-badge').className = 'q-badge ' + (q.subject==='Biology'?'badge-bio':q.subject==='Chemistry'?'badge-chem':'badge-phy');
+  document.getElementById('q-ncert-ref').textContent = q.ncert;
+  document.getElementById('q-text').textContent = q.text;
+
+  const diagEl = document.getElementById('q-diagram');
+  if(q.diagram) { diagEl.innerHTML = q.diagram; diagEl.style.display = 'block'; }
+  else diagEl.style.display = 'none';
+
+  const optsEl = document.getElementById('q-options');
+  optsEl.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  q.options.forEach((opt,idx) => {
+    const div = document.createElement('div');
+    div.className = 'option' + (answers[i]===idx?' selected':'');
+    div.innerHTML = `<div class="option-letter">${letters[idx]}</div><div>${opt}</div>`;
+    div.onclick = () => {
+      if(answers[i] !== undefined && answers[i] !== -1) return;
+      answers[i] = idx;
+      document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+      div.classList.add('selected');
+      document.querySelectorAll('.q-dot')[i].classList.add('answered');
+      document.querySelectorAll('.q-dot')[i].classList.remove('current');
+      showExplanation(q, idx);
+    };
+    optsEl.appendChild(div);
+  });
+
+  document.getElementById('answer-explanation').style.display = 'none';
+  if(answers[i] !== undefined) showExplanation(q, answers[i]);
+
+  document.getElementById('btn-prev').disabled = i===0;
+  document.getElementById('btn-next').textContent = i===questions.length-1 ? 'Submit Test ✓' : 'Next →';
+
+  startTimer();
+  updatePalette(i);
+}
+
+function showExplanation(q, chosen) {
+  const expEl = document.getElementById('answer-explanation');
+  expEl.style.display = 'block';
+  document.getElementById('explanation-text').textContent = q.explanation;
+  const opts = document.querySelectorAll('.option');
+  opts[q.correct].classList.add('correct');
+  if(chosen !== q.correct) opts[chosen].classList.add('wrong');
+}
+
+function startTimer() {
+  timeLeft = 60;
+  updateTimerDisplay();
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    updateTimerDisplay();
+    if(timeLeft <= 0) {
+      clearInterval(timerInterval);
+      if(answers[currentQ] === undefined) { answers[currentQ] = -1; } // timeout = skip
+      setTimeout(() => nextQ(), 400);
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay() {
+  const el = document.getElementById('mock-timer');
+  el.textContent = timeLeft;
+  el.className = 'timer-box' + (timeLeft <= 15 ? ' warning' : '');
+}
+
+function nextQ() {
+  if(currentQ === questions.length-1) { submitMock(); return; }
+  currentQ++;
+  loadQuestion(currentQ);
+}
+function prevQ() {
+  if(currentQ > 0) { currentQ--; loadQuestion(currentQ); }
+}
+
+function renderPalette() {
+  const p = document.getElementById('q-palette');
+  p.innerHTML = '';
+  questions.forEach((_,i) => {
+    const d = document.createElement('div');
+    d.className = 'q-dot' + (i===0?' current':'');
+    d.textContent = i+1;
+    d.onclick = () => { currentQ=i; loadQuestion(i); };
+    p.appendChild(d);
+  });
+}
+
+function updatePalette(i) {
+  document.querySelectorAll('.q-dot').forEach((d,idx) => {
+    d.classList.remove('current','answered','skipped');
+    if(idx===i) d.classList.add('current');
+    else if(answers[idx]===undefined) {}
+    else if(answers[idx]===-1) d.classList.add('skipped');
+    else d.classList.add('answered');
+  });
+}
+
+function submitMock() {
+  clearInterval(timerInterval);
+  let correct=0, wrong=0, skip=0, score=0;
+  questions.forEach((q,i) => {
+    if(answers[i]===undefined || answers[i]===-1) skip++;
+    else if(answers[i]===q.correct) { correct++; score+=4; }
+    else { wrong++; score-=1; }
+  });
+  document.getElementById('mock-test').style.display = 'none';
+  document.getElementById('mock-result').style.display = 'block';
+  document.getElementById('final-score').textContent = Math.max(0,score);
+  document.getElementById('res-correct').textContent = correct;
+  document.getElementById('res-wrong').textContent = wrong;
+  document.getElementById('res-skip').textContent = skip;
+  const pct = (score / (questions.length*4)) * 100;
+  let msg = pct >= 85 ? "🎉 Excellent! You're on track for a top NEET score!" : pct >= 60 ? "👍 Good effort! Focus on the topics you missed." : "📚 Keep practising! Review NCERT chapters for weak areas.";
+  document.getElementById('result-msg').textContent = msg;
+  showToast("Score submitted to leaderboard!");
+}
+
+// ══════════════════════════════
+// Q&A BANK
+// ══════════════════════════════
+let activeSubject = 'all';
+
+function renderQA(subject, query) {
+  const list = document.getElementById('qa-list');
+  let data = qaBank;
+  if(subject !== 'all') data = data.filter(q => q.subject === subject);
+  if(query) { const q = query.toLowerCase(); data = data.filter(item => item.q.toLowerCase().includes(q) || item.a.toLowerCase().includes(q)); }
+  list.innerHTML = data.map((item,i) => `
+    <div class="qa-item" id="qa-${i}">
+      <div class="qa-q" onclick="toggleQA(${i})">
+        <div class="qa-q-text">${item.q}</div>
+        <svg class="qa-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="qa-a">
+        <div class="answer-label">Answer</div>
+        ${item.a}
+        <br><span class="ncert-ref">📖 ${item.ncert}</span>
+      </div>
+    </div>`).join('');
+  if(data.length===0) list.innerHTML = '<div style="text-align:center;padding:32px;color:var(--muted);">No questions found for your search. Try a different keyword.</div>';
+}
+
+function toggleQA(i) {
+  const el = document.getElementById('qa-'+i);
+  el.classList.toggle('open');
+}
+function filterQA() { renderQA(activeSubject, document.getElementById('qa-search').value); }
+function filterSubject(s, el) {
+  activeSubject = s;
+  document.querySelectorAll('.subject-tabs .stab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  renderQA(s, document.getElementById('qa-search').value);
+}
+
+// ══════════════════════════════
+// LEADERBOARD
+// ══════════════════════════════
+function renderLeaderboard() {
+  const now = new Date();
+  document.getElementById('lb-date-label').textContent = 'Today · '+now.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long'});
+  const tbl = document.getElementById('leaderboard-table');
+  const medals = ['🥇','🥈','🥉'];
+  const rankClass = ['top1','top2','top3'];
+  tbl.innerHTML = `
+    <div class="lb-row header">
+      <div>Rank</div><div>Student</div><div>Score</div><div>Time</div><div>Correct</div>
+    </div>` +
+    leaderboardData.map((s,i) => `
+    <div class="lb-row ${rankClass[i]||''}">
+      <div class="rank ${i===0?'gold':i===1?'silver':i===2?'bronze':''}">${medals[i]||i+1}</div>
+      <div class="student-info">
+        <div class="avatar" style="background:${s.color};color:var(--ink);">${s.avatar}</div>
+        <div><div class="student-name">${s.name}</div><div class="student-city">${s.city}</div></div>
+      </div>
+      <div><div class="score-bar"><div class="mini-bar"><div class="mini-fill" style="width:${(s.score/400)*100}%"></div></div><strong>${s.score}</strong></div></div>
+      <div style="font-family:monospace;font-size:0.85rem;">${s.time}</div>
+      <div><span class="chip green">${s.correct}/100</span></div>
+    </div>`).join('');
+}
+
+// ══════════════════════════════
+// TOPICS
+// ══════════════════════════════
+let topicSubjectFilter = 'all';
+
+function renderTopics(subject, query) {
+  topicSubjectFilter = subject;
+  const grid = document.getElementById('topic-grid');
+  let data = topics;
+  if(subject !== 'all') data = data.filter(t => t.subject === subject);
+  if(query) { const q = query.toLowerCase(); data = data.filter(t => t.name.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q)); }
+  grid.innerHTML = data.map(t => `
+    <div class="topic-card" onclick="showTopicAnswer('${t.name.toLowerCase().replace(/[^a-z0-9]/g,' ').trim()}','${t.name}')">
+      <h4>${t.subject==='biology'?'🧬 ':t.subject==='chemistry'?'⚗️ ':'⚡ '}${t.name}</h4>
+      <p>${t.desc}</p>
+      <span class="topic-count">${t.count.toLocaleString()} questions</span>
+    </div>`).join('');
+}
+
+function searchTopics() {
+  const q = document.getElementById('topic-search').value;
+  renderTopics(topicSubjectFilter, q);
+  if(q.length > 2) {
+    for(const key in topicAnswers) {
+      if(q.toLowerCase().includes(key) || key.includes(q.toLowerCase())) {
+        displayTopicAnswer(topicAnswers[key]);
+        return;
+      }
+    }
+  } else document.getElementById('topic-answer-box').style.display = 'none';
+}
+
+function filterTopics(s, el) {
+  document.querySelectorAll('#page-topics .subject-tabs .stab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  renderTopics(s, document.getElementById('topic-search').value);
+}
+
+function showTopicAnswer(key, name) {
+  let found = null;
+  for(const k in topicAnswers) { if(key.includes(k) || k.includes(key.split(' ')[0])) { found = topicAnswers[k]; break; } }
+  if(found) displayTopicAnswer(found);
+  else displayTopicAnswer({ title: name, ncert:"NCERT", body:`${name} is an important NEET topic. Use the Q&A bank and mock tests to practise questions on this topic. For in-depth study, refer to the relevant NCERT chapter.` });
+}
+
+function displayTopicAnswer(data) {
+  const box = document.getElementById('topic-answer-box');
+  document.getElementById('topic-answer-title').textContent = data.title;
+  document.getElementById('topic-ncert-ref').textContent = data.ncert;
+  document.getElementById('topic-answer-body').textContent = data.body;
+  box.style.display = 'block';
+  box.scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+// ══════════════════════════════
+// CHATBOT (Gemini AI)
+// ══════════════════════════════
+let chatOpen = false;
+const GEMINI_API_KEY = 'AQ.Ab8RN6KRBJ1xF_RIHB7qLtVwnGcu3qWq4Bht75qRjrYXjKQVpw';
+const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + GEMINI_API_KEY;
+let chatHistory = [];
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('chatWindow').className = 'chat-window' + (chatOpen?' open':'');
+}
+
+async function sendChat() {
+  const input = document.getElementById('chatInput');
+  const msg = input.value.trim();
+  if(!msg) return;
+  addMsg(msg, 'user');
+  input.value = '';
+  addMsg('...', 'bot', 'typing-indicator');
+
+  chatHistory.push({ role: 'user', parts: [{ text: msg }] });
+
+  try {
+    const res = await fetch(GEMINI_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system_instruction: { parts: [{ text: 'You are a helpful NEET exam preparation assistant. Answer questions about Biology, Chemistry, and Physics for NEET. Be concise and helpful. Refer to NCERT topics when relevant.' }] },
+        contents: chatHistory
+      })
+    });
+    const data = await res.json();
+    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'API Error: ' + JSON.stringify(data.error||data);
+    chatHistory.push({ role: 'model', parts: [{ text: reply }] });
+    removeTyping();
+    addMsg(reply, 'bot');
+  } catch(e) {
+    removeTyping();
+    addMsg('Error: ' + (e.message||JSON.stringify(e)), 'bot');
+  }
+}
+
+function removeTyping() {
+  const t = document.getElementById('typing-indicator');
+  if(t) t.remove();
+}
+
+function addMsg(text, type, id='') {
+  const msgs = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'msg ' + type;
+  if(id) div.id = id;
+  div.textContent = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+// ══════════════════════════════
+// RATING
+// ══════════════════════════════
+const ratings = {};
+function setRating(cat, val) {
+  ratings[cat] = val;
+  const prefix = cat==='overall' ? '' : cat+'-';
+  const id = cat==='overall' ? 'overall-stars' : cat+'-stars';
+  const stars = document.getElementById(id).children;
+  for(let i=0;i<stars.length;i++) stars[i].classList.toggle('lit', i<val);
+}
+function submitRating() {
+  showToast("⭐ Thank you for your feedback!");
+  setTimeout(() => showPage('home'), 1200);
+}
+
+// ══════════════════════════════
+// DOWNLOADS
+// ══════════════════════════════
+function downloadFile(name) {
+  showToast(`⬇ Downloading: ${name}`);
+}
+
+// ══════════════════════════════
+// TOAST
+// ══════════════════════════════
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ══════════════════════════════
+// INIT
+// ══════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  renderQA('all','');
+  renderTopics('all','');
+  renderLeaderboard();
+});
+</script>
+</body>
+</html>
