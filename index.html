@@ -1659,33 +1659,58 @@ function displayTopicAnswer(data) {
 }
 
 // ══════════════════════════════
-// CHATBOT
+// CHATBOT (Gemini AI)
 // ══════════════════════════════
 let chatOpen = false;
+const GEMINI_API_KEY = 'AQ.Ab8RN6KRBJ1xF_RIHB7qLtVwnGcu3qWq4Bht75qRjrYXjKQVpw';
+const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + GEMINI_API_KEY;
+let chatHistory = [];
 
 function toggleChat() {
   chatOpen = !chatOpen;
   document.getElementById('chatWindow').className = 'chat-window' + (chatOpen?' open':'');
 }
 
-function sendChat() {
+async function sendChat() {
   const input = document.getElementById('chatInput');
   const msg = input.value.trim();
   if(!msg) return;
   addMsg(msg, 'user');
   input.value = '';
+  addMsg('...', 'bot', 'typing-indicator');
 
-  setTimeout(() => {
-    const key = Object.keys(chatResponses).find(k => msg.toLowerCase().includes(k));
-    const resp = chatResponses[key||'default'];
-    addMsg(resp.replace(/\*\*(.*?)\*\*/g, '$1'), 'bot');
-  }, 700);
+  chatHistory.push({ role: 'user', parts: [{ text: msg }] });
+
+  try {
+    const res = await fetch(GEMINI_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system_instruction: { parts: [{ text: 'You are a helpful NEET exam preparation assistant. Answer questions about Biology, Chemistry, and Physics for NEET. Be concise and helpful. Refer to NCERT topics when relevant.' }] },
+        contents: chatHistory
+      })
+    });
+    const data = await res.json();
+    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'API Error: ' + JSON.stringify(data.error||data);
+    chatHistory.push({ role: 'model', parts: [{ text: reply }] });
+    removeTyping();
+    addMsg(reply, 'bot');
+  } catch(e) {
+    removeTyping();
+    addMsg('Error: ' + (e.message||JSON.stringify(e)), 'bot');
+  }
 }
 
-function addMsg(text, type) {
+function removeTyping() {
+  const t = document.getElementById('typing-indicator');
+  if(t) t.remove();
+}
+
+function addMsg(text, type, id='') {
   const msgs = document.getElementById('chatMessages');
   const div = document.createElement('div');
   div.className = 'msg ' + type;
+  if(id) div.id = id;
   div.textContent = text;
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
